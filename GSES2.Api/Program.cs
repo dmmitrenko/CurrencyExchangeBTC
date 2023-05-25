@@ -1,3 +1,4 @@
+using GSES2.Api;
 using GSES2.Api.Extensions;
 using GSES2.Application.RequestHandlers;
 using MediatR;
@@ -30,6 +31,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.MapControllers();
 
