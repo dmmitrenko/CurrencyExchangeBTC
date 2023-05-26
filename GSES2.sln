@@ -11,7 +11,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GSES2.Domain", "GSES2.Domai
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GSES2.Application", "GSES2.Application\GSES2.Application.csproj", "{A637E4E6-12F7-4862-AD22-146FA0736C05}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GSES2.Core", "GSES2.Core\GSES2.Core.csproj", "{4C00EFAD-8450-4FB6-AE8A-C828EABAE142}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GSES2.Core", "GSES2.Core\GSES2.Core.csproj", "{4C00EFAD-8450-4FB6-AE8A-C828EABAE142}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D6BE5E24-4951-4C3D-B49A-EBDDEBE136FC}"
+	ProjectSection(SolutionItems) = preProject
+		Dockerfile = Dockerfile
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

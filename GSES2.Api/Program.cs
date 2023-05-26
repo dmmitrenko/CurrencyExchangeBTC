@@ -2,6 +2,7 @@ using GSES2.Api;
 using GSES2.Api.Extensions;
 using GSES2.Application.RequestHandlers;
 using MediatR;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +10,18 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+    c.IncludeXmlComments(xmlPath);
+
+    c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+    {
+        Title = "GSES2 BTC application",
+        Version = "v1"
+    });
+});
 
 builder.Services.ConfigureApiClients();
 builder.Services.ConfigureOptions(builder.Configuration);
@@ -22,11 +34,11 @@ builder.Services.AddMediatR(cfg =>
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
+app.UseSwagger();
+app.UseSwaggerUI(c =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "GSES2 BTC application");
+});
 
 app.UseHttpsRedirection();
 

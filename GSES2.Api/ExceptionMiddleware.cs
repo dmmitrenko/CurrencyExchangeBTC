@@ -22,7 +22,7 @@ public class ExceptionMiddleware
         catch(DomainException ex)
         {
             httpContext.Response.ContentType = "application/json";
-            httpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+            httpContext.Response.StatusCode = (int)ex.InternalStatusCode!;
 
             var errorResponse = new ErrorResponse
             {
@@ -43,7 +43,7 @@ public class ExceptionMiddleware
 
             var errorResponse = new ErrorResponse
             {
-                Message = "Сталася помилка на сервері."
+                Message = "Something went wrong."
             };
 
             var json = JsonConvert.SerializeObject(errorResponse);
