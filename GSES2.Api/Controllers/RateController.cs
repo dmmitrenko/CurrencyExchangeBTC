@@ -10,6 +10,13 @@ public class RateController : Controller
 
     public RateController(IMediator mediator) => _mediator = mediator;
 
+    /// <summary>
+    /// Отримати поточний курс BTC до UAH
+    /// </summary>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [HttpGet("rate")]
     public async Task<IActionResult> GetBtcToUahResponse(CancellationToken cancellationToken = default)
     {
