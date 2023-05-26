@@ -28,7 +28,7 @@ public static class ServiceExtensions
     public static void ConfigureServices(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddSendGrid(options =>
-            options.ApiKey = configuration["SendGridApiSettings:ApiKey"]);
+            options.ApiKey = Environment.GetEnvironmentVariable(configuration["SendGridApiSettings:ApiKey"]));
 
         services.AddScoped<IRepository, GSES2.Repository.Repository>();
     }
